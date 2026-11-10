@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#ffe4ee">
+  <title>ถึงที่รักของเค้า 💗</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600&family=Mali:wght@400;500;600&display=swap');
+    :root{--pink:#ff7fa8;--deep:#d94f82;--pale:#fff0f5;--ink:#704052}
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;color:var(--ink);font-family:'Kanit',sans-serif;background:linear-gradient(160deg,#fff8fb,#ffe7f0 55%,#fff4f8);overflow-x:hidden}
+    .hearts-bg{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:0}
+    .floating{position:absolute;bottom:-50px;opacity:.35;animation:floatUp linear infinite}
+    @keyframes floatUp{to{transform:translateY(-115vh) rotate(25deg);opacity:0}}
+    header,.section,footer{position:relative;z-index:1}
+    header{min-height:88vh;display:grid;place-items:center;text-align:center;padding:36px 18px}
+    .hero{max-width:720px}
+    .eyebrow{letter-spacing:3px;color:#c56b8d;font-size:.85rem}
+    h1{font-family:'Mali',cursive;font-size:clamp(2.4rem,8vw,5rem);line-height:1.2;margin:12px 0;color:#d94f82}
+    .subtitle{font-size:1.08rem;line-height:1.9;max-width:560px;margin:0 auto 28px}
+    .scroll-hint{margin-top:34px;color:#bd7892;font-size:.9rem}
+    .envelope-wrap{margin:28px auto 0;max-width:330px;cursor:pointer;outline:none}
+    .envelope{height:190px;position:relative;background:#ffabc5;border-radius:12px;box-shadow:0 16px 35px #d65d8833;display:grid;place-items:center;transition:.35s}
+    .envelope:before{content:"";position:absolute;inset:0;background:#ff8fb3;clip-path:polygon(0 0,50% 58%,100% 0);border-radius:12px 12px 0 0;transform-origin:top;transition:.5s;z-index:2}
+    .envelope:after{content:"";position:absolute;inset:0;background:linear-gradient(145deg,transparent 49%,#ffd0df 50%),linear-gradient(215deg,transparent 49%,#ffc0d4 50%);border-radius:0 0 12px 12px}
+    .seal{z-index:3;background:#fff1f6;color:#dc5b88;border-radius:50%;width:54px;height:54px;display:grid;place-items:center;font-size:1.7rem;box-shadow:0 3px 10px #a83e6522;transition:.3s}
+    .envelope.open:before{transform:rotateX(180deg);z-index:0}
+    .envelope.open .seal{transform:translateY(-15px) scale(.8);opacity:0}
+    .tap{font-size:.9rem;color:#b84d78;margin-top:12px}
+    .letter{display:none;background:#fffdfd;border:1px solid #ffd4e1;border-radius:18px;padding:25px 23px;margin:20px auto 0;max-width:570px;text-align:left;box-shadow:0 12px 35px #c94d7920;line-height:2;white-space:pre-line;animation:appear .5s ease}
+    .letter.show{display:block}
+    @keyframes appear{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+    .section{padding:64px 18px;max-width:1000px;margin:auto}
+    .section h2{text-align:center;font-family:'Mali',cursive;color:#d94f82;font-size:clamp(1.8rem,5vw,2.6rem);margin:0 0 10px}
+    .lead{text-align:center;margin:0 auto 30px;color:#9c6a7e}
+    .timer-card{max-width:700px;margin:0 auto;background:#ffffffc9;border:1px solid #ffd6e3;border-radius:24px;padding:28px 18px;text-align:center;box-shadow:0 12px 35px #d65d8817}
+    .timer{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:20px}
+    .time-box{background:#fff0f5;border-radius:15px;padding:15px 5px}
+    .time-box strong{display:block;color:#d94f82;font-size:clamp(1.5rem,5vw,2.3rem)}
+    .time-box span{font-size:.85rem;color:#a36d82}
+    .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .memory{background:#fff;border:1px solid #ffd6e3;border-radius:18px;padding:10px;box-shadow:0 8px 24px #d65d8814;transform:rotate(var(--tilt,0deg))}
+    .photo{aspect-ratio:4/5;border-radius:12px;background:linear-gradient(145deg,#ffe1eb,#fff5f8);display:grid;place-items:center;overflow:hidden;color:#bf7791;text-align:center;padding:10px}
+    .photo img{width:100%;height:100%;object-fit:cover;display:block}
+    .memory p{text-align:center;margin:10px 4px 3px;font-family:'Mali',cursive;font-size:.95rem}
+    .music-card{max-width:620px;margin:auto;background:#fff;border:1px solid #ffd6e3;border-radius:20px;padding:22px;text-align:center}
+    button{border:0;border-radius:999px;padding:13px 24px;background:linear-gradient(135deg,#ff8fb3,#e65c8d);color:white;font:500 1rem 'Kanit',sans-serif;cursor:pointer;box-shadow:0 7px 18px #d94f8240;transition:.2s}
+    button:hover{transform:translateY(-2px)}
+    .music-note{font-size:2rem;margin-bottom:8px}
+    .love-button{display:block;margin:28px auto 0;font-size:1.1rem;padding:16px 30px}
+    footer{text-align:center;padding:40px 16px 55px;color:#b16f88;font-family:'Mali',cursive}
+    .burst{position:fixed;z-index:10;pointer-events:none;font-size:24px;animation:burst 1.5s ease-out forwards}
+    @keyframes burst{0%{transform:translate(0,0) scale(.4);opacity:0}15%{opacity:1}100%{transform:translate(var(--x),var(--y)) rotate(var(--r)) scale(1.5);opacity:0}}
+    @media(max-width:650px){.gallery{grid-template-columns:1fr 1fr}.memory:last-child{grid-column:1/-1;max-width:65%;justify-self:center}.timer{grid-template-columns:repeat(2,1fr)}header{min-height:82vh}}
+    @media(max-width:390px){.gallery{gap:10px}.memory{padding:7px}.memory p{font-size:.82rem}}
+  </style>
+</head>
+<body>
+  <div class="hearts-bg" id="heartsBg"></div>
+  <header>
+    <div class="hero">
+      <div class="eyebrow">A LITTLE SURPRISE FOR YOU</div>
+      <h1>ถึงที่รัก 💗</h1>
+      <p class="subtitle">มีบางอย่างอยากบอกเธอ…<br>ค่อย ๆ เปิดดูนะ เค้าตั้งใจทำให้เธอเลย</p>
+      <div class="envelope-wrap" id="openEnvelope" role="button" tabindex="0" aria-label="เปิดจดหมายรัก">
+        <div class="envelope" id="envelope"><div class="seal">♥</div></div>
+        <div class="tap">แตะซองจดหมายเพื่อเปิดอ่านข้อความ 💌</div>
+      </div>
+      <div class="letter" id="letter">เค้ารักเธอนะ บางทีอาจจะทำตัวไม่น่ารักใส่เธอไปบ้าง แต่เค้าก็ยังรักเธอเสมอนะ อาจจะมีในบางครั้งที่เราไม่เข้าใจกันบ้างก็อยากให้เราผ่านมันไปได้ด้วยกันนะที่รัก
+
+วันไหนที่เธอหงุดหงิด เครียด ไม่มีความสุข อย่าลืมนะว่ายังมีเค้าอยู่ตรงนี้ ข้าง ๆ เธอเสมอ เรื่องไหนที่เธอเล่าได้ เธอเล่าให้เค้าได้เลย แต่เรื่องไหนที่ยังไม่พร้อมเล่า เค้าจะรอวันที่เธอพร้อมนะ
+
+อยู่ด้วยกันกับเค้าแบบนี้นาน ๆ เลยนะะะ เค้ารักเธออออ จุ๊บ ๆๆ 💗</div>
+      <div class="scroll-hint">เลื่อนลงไปดูความทรงจำของเราสิ ↓</div>
+    </div>
+  </header>
+
+  <section class="section" id="time">
+    <h2>เวลาที่เรามีกันและกัน ⏳</h2>
+    <p class="lead">ทุกวันที่มีเธอ เป็นวันที่พิเศษสำหรับเค้า</p>
+    <div class="timer-card">
+      <div>เรารักกันมาแล้ว</div>
+      <div class="timer">
+        <div class="time-box"><strong id="days">—</strong><span>วัน</span></div>
+        <div class="time-box"><strong id="hours">—</strong><span>ชั่วโมง</span></div>
+        <div class="time-box"><strong id="minutes">—</strong><span>นาที</span></div>
+        <div class="time-box"><strong id="seconds">—</strong><span>วินาที</span></div>
+      </div>
+      <p style="margin:20px 0 0;color:#b16f88;font-size:.9rem">ตั้งแต่วันแรกที่เราเริ่มต้นด้วยกัน 💞</p>
+    </div>
+  </section>
+
+  <section class="section" id="memories">
+    <h2>ความทรงจำของเรา 📸</h2>
+    <p class="lead">รูปธรรมดา ๆ ที่มีเธออยู่ กลายเป็นรูปโปรดของเค้าเสมอ</p>
+    <div class="gallery">
+      <div class="memory" style="--tilt:-2deg"><div class="photo"><img src="assets/photo1.jpg" alt="รูปความทรงจำที่ 1" onerror="this.remove();this.parentElement.innerHTML='ใส่รูปคู่รูปที่ 1<br>assets/photo1.jpg 💗'"></div><p>รอยยิ้มที่เค้าชอบ</p></div>
+      <div class="memory" style="--tilt:1.5deg"><div class="photo"><img src="assets/photo2.jpg" alt="รูปความทรงจำที่ 2" onerror="this.remove();this.parentElement.innerHTML='ใส่รูปคู่รูปที่ 2<br>assets/photo2.jpg 💗'"></div><p>วันดี ๆ ของเรา</p></div>
+      <div class="memory" style="--tilt:-1deg"><div class="photo"><img src="assets/photo3.jpg" alt="รูปความทรงจำที่ 3" onerror="this.remove();this.parentElement.innerHTML='ใส่รูปคู่รูปที่ 3<br>assets/photo3.jpg 💗'"></div><p>อยากมีวันแบบนี้อีกเยอะ ๆ</p></div>
+    </div>
+  </section>
+
+  <section class="section" id="music">
+    <h2>เพลงนี้ให้เธอ 🎵</h2>
+    <p class="lead">อยากให้เพลงนี้เป็นอีกหนึ่งความทรงจำของเรา</p>
+    <div class="music-card">
+      <div class="music-note">🎶💗🎶</div>
+      <p>เพลงโปรดของเรา</p>
+      <audio id="loveSong" src="assets/love-song.mp3" loop preload="none"></audio>
+      <button id="musicButton">▶ เล่นเพลงของเรา</button>
+      <p style="font-size:.82rem;color:#a8798b;margin-bottom:0">หมายเหตุ: มือถือและเบราว์เซอร์ส่วนใหญ่ไม่อนุญาตให้เว็บเปิดเสียงเอง ต้องแตะปุ่มเล่นก่อนนะ</p>
+    </div>
+  </section>
+
+  <section class="section" style="text-align:center">
+    <h2>มีอะไรอยากบอกอีกไหม? 💌</h2>
+    <p class="lead">ถ้าอ่านมาถึงตรงนี้…ขอกอดทีนึงได้ไหม</p>
+    <button class="love-button" id="loveButton">กดตรงนี้ เค้ารักเธอมากแค่ไหน 💖</button>
+  </section>
+
+  <footer>ทำด้วยหัวใจทั้งหมดของเค้า ถึงที่รักคนเดียว 💗</footer>
+
+  <script>
+    // แก้วันที่เริ่มคบกันตรงนี้ รูปแบบ YYYY-MM-DDTHH:MM:SS
+    // ตัวอย่าง: 2024-02-14T00:00:00
+    const relationshipStart = new Date("2026-10-28T00:00:00");
+
+    function updateTimer(){
+      const now = new Date();
+      let diff = Math.max(0, now - relationshipStart);
+      const days = Math.floor(diff / 86400000); diff %= 86400000;
+      const hours = Math.floor(diff / 3600000); diff %= 3600000;
+      const minutes = Math.floor(diff / 60000); diff %= 60000;
+      const seconds = Math.floor(diff / 1000);
+      document.getElementById('days').textContent = Math.floor((now - relationshipStart) / 86400000).toLocaleString('th-TH');
+      document.getElementById('hours').textContent = String(hours).padStart(2,'0');
+      document.getElementById('minutes').textContent = String(minutes).padStart(2,'0');
+      document.getElementById('seconds').textContent = String(seconds).padStart(2,'0');
+    }
+    updateTimer(); setInterval(updateTimer,1000);
+
+    const envelopeWrap = document.getElementById('openEnvelope');
+    function openLetter(){
+      document.getElementById('envelope').classList.toggle('open');
+      document.getElementById('letter').classList.toggle('show');
+      if(document.getElementById('letter').classList.contains('show')){
+        document.getElementById('letter').scrollIntoView({behavior:'smooth',block:'nearest'});
+        burstHearts(window.innerWidth/2, window.innerHeight*.45, 18);
+      }
+    }
+    envelopeWrap.addEventListener('click',openLetter);
+    envelopeWrap.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();openLetter();}});
+
+    const song = document.getElementById('loveSong');
+    const musicButton = document.getElementById('musicButton');
+    musicButton.addEventListener('click',async()=>{
+      if(song.paused){try{await song.play();musicButton.textContent='❚❚ หยุดเพลงชั่วคราว';}catch(e){musicButton.textContent='แตะอีกครั้งเพื่อเล่นเพลง';}}
+      else{song.pause();musicButton.textContent='▶ เล่นเพลงของเรา';}
+    });
+
+    function burstHearts(x,y,count=45){
+      const symbols=['💗','💖','💕','💘','💞','❤️'];
+      for(let i=0;i<count;i++){
+        const el=document.createElement('span');el.className='burst';
+        el.textContent=symbols[Math.floor(Math.random()*symbols.length)];
+        el.style.left=x+'px';el.style.top=y+'px';
+        el.style.setProperty('--x',(Math.random()*460-230)+'px');
+        el.style.setProperty('--y',(Math.random()*-520-40)+'px');
+        el.style.setProperty('--r',(Math.random()*180-90)+'deg');
+        el.style.animationDelay=(Math.random()*.25)+'s';
+        document.body.appendChild(el);setTimeout(()=>el.remove(),1900);
+      }
+    }
+    document.getElementById('loveButton').addEventListener('click',()=>{
+      burstHearts(window.innerWidth/2,window.innerHeight*.72,75);
+    });
+
+    const bg=document.getElementById('heartsBg');
+    for(let i=0;i<18;i++){
+      const h=document.createElement('span');h.className='floating';h.textContent=['♡','♥','💕'][i%3];
+      h.style.left=(Math.random()*100)+'%';h.style.animationDuration=(9+Math.random()*13)+'s';
+      h.style.animationDelay=(-Math.random()*18)+'s';h.style.fontSize=(16+Math.random()*22)+'px';bg.appendChild(h);
+    }
+  </script>
+</body>
+</html>
